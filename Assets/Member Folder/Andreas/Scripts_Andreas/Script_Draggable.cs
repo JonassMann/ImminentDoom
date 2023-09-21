@@ -5,6 +5,16 @@ using UnityEngine.EventSystems;
 
 public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public enum Type
+    {
+        Etos,
+        Patos,
+        Logos,
+        Kairos
+    }
+
+    public Type typeOfRhetorical = Type.Etos;
+
     [HideInInspector]
     public Transform parentToReturnTo = null;
 
@@ -29,5 +39,6 @@ public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         this.transform.SetParent(parentToReturnTo); // Set the parent back to the saved parent  
 
         GetComponent<CanvasGroup>().blocksRaycasts = true; // Make the object non transparent for raycasts (so we can hit raycasts on it again)
+
     }
 }
