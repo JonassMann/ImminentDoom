@@ -83,5 +83,7 @@ public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
         Destroy(placeholder); // Destroy the placeholder object
 
+        GetComponent<CanvasGroup>().blocksRaycasts = true; // Make the object non transparent for raycasts (so we can hit raycasts on it again)
+
     }
 }
