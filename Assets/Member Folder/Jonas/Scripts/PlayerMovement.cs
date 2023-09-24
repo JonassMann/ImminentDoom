@@ -10,13 +10,13 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTransform;
     private Transform cameraTransform;
 
-    void Start()
+    private void Start()
     {
         playerTransform = GetComponent<Transform>();
         cameraTransform = Camera.main.transform;
     }
 
-    void Update()
+    private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
