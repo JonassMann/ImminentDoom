@@ -11,6 +11,8 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
     public string cardName;
     public string description;
     public Sprite cardImage;
+    public Transform transform; // Reference to the card's GameObject in the scene.
+
     public enum Type // Create an enum to store the type of card
     {
         Etos,
@@ -21,6 +23,8 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
 
     public float RhetoricalValue;
 
+    public float damage;
+    public float healing;
     public float Cool;
     public float Etosmultiplier;
     public float Patosmultiplier;

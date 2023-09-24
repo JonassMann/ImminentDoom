@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8cb61cbb4515d34dbc8af9ee4cfcfa8, type: 3}
-  m_Name: Data_Card_Etos_XQC
+  m_Name: Data_Beta_Card_Etos_XQC
   m_EditorClassIdentifier: 
   cardName: XQC LIVE ON TWITCH
   description: Its Crazy Chat
   cardImage: {fileID: 21300000, guid: b5e4b13ed75b9a445b67f7f7679410ce, type: 3}
   RhetoricalValue: 1
+  damage: 25
+  healing: 0
   Cool: -100
   Etosmultiplier: 1.5
   Patosmultiplier: 1

@@ -350,8 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fece115d3bd824c9f66c7ac22c86e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDataArray:
-  - {fileID: 11400000, guid: 8187869f8b3ee0d48990923bd09ee111, type: 2}
+  cardDataArray: []
   cardImage: {fileID: 2005222831850443457}
   cardTitleText: {fileID: 7158310254416477257}
   descriptionText: {fileID: 7798247643194524711}
