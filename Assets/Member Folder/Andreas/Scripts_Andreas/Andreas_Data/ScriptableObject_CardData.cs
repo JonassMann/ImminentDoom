@@ -13,6 +13,8 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
     public Sprite cardImage;
     public Transform transform; // Reference to the card's GameObject in the scene.
 
+    public int cost;
+
     public enum Type // Create an enum to store the type of card
     {
         Etos,
@@ -21,15 +23,21 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
         Kairos
     }
 
-    public float RhetoricalValue;
+    public enum Effects
+    {
+        Damage,
+        Healing,
+        Block,
 
-    public float damage;
-    public float healing;
-    public float Cool;
-    public float Etosmultiplier;
-    public float Patosmultiplier;
-    public float Logosmultiplier;
-    public float Kairosmultiplier;
+    }
+
+
+
+
+    
+
+    
+    
 
 
 
