@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class Script_CardManager : MonoBehaviour
@@ -10,8 +11,11 @@ public class Script_CardManager : MonoBehaviour
     public List<ScriptableObject_CardData> playerHand = new List<ScriptableObject_CardData>();
     public List<ScriptableObject_CardData> discardPile = new List<ScriptableObject_CardData>(); // Discard pile for processed cards.
     public GameObject cardPrefab;
-    public GameObject cardParent;
+    public GameObject cardParentHand;
+    public GameObject cardParentPlayArea;
     public Script_Enemy_Entity targetEntity;
+    public Script_Player_Entity targetPlayer;
+
 
 
 
@@ -36,7 +40,7 @@ public class Script_CardManager : MonoBehaviour
             playerHand.Add(drawnCard);
 
             // Instantiate the drawn card as a child of the specified card parent GameObject.
-            GameObject newCard = Instantiate(cardPrefab, cardParent.transform);
+            GameObject newCard = Instantiate(cardPrefab, cardParentHand.transform);
 
             // Get the CardDisplay component of the new card and display the drawn card's data.
             Script_CardDisplay cardDisplay = newCard.GetComponent<Script_CardDisplay>();
@@ -54,31 +58,21 @@ public class Script_CardManager : MonoBehaviour
 
     public void ProcessNextCard()
     {
-        if (drawnCards.Count > 0)
+        foreach (Transform t in cardParentPlayArea.transform)
         {
             ScriptableObject_CardData nextCard = drawnCards[0]; // Get the first card in the list.
             drawnCards.RemoveAt(0); // Remove the processed card from the list.
             ApplyCardEffect(nextCard); // Apply the card effect.
 
-            // Check if the card's parent is the "CardDropArea" before processing it.
-            if (nextCard.transform.parent == cardParent.transform)
+            if (drawnCards != null)
             {
                 ApplyCardEffect(nextCard);
-                discardPile.Add(nextCard);
             }
             else
             {
                 Debug.Log("Card is not in the CardDropArea and will not be processed.");
             }
 
-
-
-
-
-        }
-        else
-        {
-            Debug.Log("No more cards to process.");
         }
     }
 
@@ -95,10 +89,24 @@ public class Script_CardManager : MonoBehaviour
 
     public void ApplyCardEffect(ScriptableObject_CardData cardData)
     {
-        // Apply card stats to the target entity (enemy or player).
-        targetEntity.TakeDamage(cardData.damage);
-        targetEntity.Heal(cardData.healing);
-        // Add any other card effects here.
+        foreach (var effect in cardData.cardEffects)
+        {
+            switch (effect.effectType)
+            {
+                case CardEffect.CardEffectType.Damage:
+                    targetEntity.TakeDamage(effect.value);
+                    break;
+                case CardEffect.CardEffectType.Healing:
+                    targetEntity.Heal(effect.value);
+                    break;
+                case CardEffect.CardEffectType.Block:
+                    targetPlayer.Block(effect.value);
+                    break;
+                default:
+                    Debug.Log("No effect type selected.");
+                    break;
+            }
+        }
     }
 
     public void ReloadCardDataButton()

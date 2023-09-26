@@ -15,7 +15,18 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
 
     public int cost;
 
-    public enum Type // Create an enum to store the type of card
+    public List<CardEffect> cardEffects = new List<CardEffect>
+    {
+    };
+
+
+  
+}
+
+[System.Serializable]
+public class CardEffect
+{
+    public enum CardType // Create an enum to store the type of card
     {
         Etos,
         Patos,
@@ -23,8 +34,9 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
         Kairos
     }
 
-    public enum Effects
+    public enum CardEffectType
     {
+        None,
         Damage,
         Healing,
         Block,
@@ -32,17 +44,14 @@ public class ScriptableObject_CardData : ScriptableObject // ScriptableObjects a
     }
 
 
+    public CardEffectType effectType;
+    public float value; // The value associated with the effect (e.g., damage amount, healing amount, etc.).
+    public float scaleing; // The amount the value scales with (e.g., damage amount, healing amount, etc.).
 
-
-    
-
-    
-    
-
-
-
-
-
-
-
+    public CardEffect(CardEffectType type, float val, float scaleing)
+    {
+        effectType = type;
+        value = val;
+        this.scaleing = scaleing;
+    }
 }

@@ -498,7 +498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 333}
+  m_AnchoredPosition: {x: 0, y: 474}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &332987510
@@ -530,8 +530,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 964094334389547186, guid: d3a9f3a0bad3dfa4a887aed102ecad91, type: 3}
       propertyPath: cardDataArray.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3bb6cc583d1099945a1da3c17fef94e1, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 964094334389547186, guid: d3a9f3a0bad3dfa4a887aed102ecad91, type: 3}
       propertyPath: cardDataArray.Array.data[1]
       value: 
@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choise Of Words
+  m_text: Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1986,8 +1986,10 @@ MonoBehaviour:
   playerHand: []
   discardPile: []
   cardPrefab: {fileID: 460063870}
-  cardParent: {fileID: 2066141120}
+  cardParentHand: {fileID: 2066141120}
+  cardParentPlayArea: {fileID: 271467481}
   targetEntity: {fileID: 77340535}
+  targetPlayer: {fileID: 0}
 --- !u!1 &1820428789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 7, y: 104}
+  m_AnchoredPosition: {x: 7, y: 214}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1820428791
@@ -2054,8 +2056,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

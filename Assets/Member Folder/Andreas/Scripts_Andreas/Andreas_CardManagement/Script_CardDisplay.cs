@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class Script_CardDisplay : MonoBehaviour
 {
     public ScriptableObject_CardData[] cardDataArray; // Create an array of cardData to store the data of the cards
-
-
     public Image cardImage;
     public TextMeshProUGUI cardTitleText;
     public TextMeshProUGUI descriptionText;
@@ -27,11 +25,11 @@ public class Script_CardDisplay : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
+    /*
     private void Start()
     {
         DisplayCard(cardDataArray[0]);
     }
-
+    */
 
 }

@@ -15,11 +15,9 @@ MonoBehaviour:
   cardName: Angy Hedgehog
   description: Let me down MOTHER!
   cardImage: {fileID: 21300000, guid: e45924f72c6bf554dbb47baf87861bf9, type: 3}
-  RhetoricalValue: 1
-  damage: 10
-  healing: 0
-  Cool: 1
-  Etosmultiplier: 1
-  Patosmultiplier: 1
-  Logosmultiplier: 1
-  Kairosmultiplier: 1
+  transform: {fileID: 0}
+  cost: 0
+  cardEffects:
+  - effectType: 1
+    value: 10
+    scaleing: 0
