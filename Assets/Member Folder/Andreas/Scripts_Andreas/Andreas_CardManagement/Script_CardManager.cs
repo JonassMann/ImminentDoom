@@ -60,19 +60,7 @@ public class Script_CardManager : MonoBehaviour
     {
         foreach (Transform t in cardParentPlayArea.transform)
         {
-            ScriptableObject_CardData nextCard = drawnCards[0]; // Get the first card in the list.
-            drawnCards.RemoveAt(0); // Remove the processed card from the list.
-            ApplyCardEffect(nextCard); // Apply the card effect.
-
-            if (drawnCards != null)
-            {
-                ApplyCardEffect(nextCard);
-            }
-            else
-            {
-                Debug.Log("Card is not in the CardDropArea and will not be processed.");
-            }
-
+            ApplyCardEffect(t.GetComponent<Script_CardDisplay>().cardData);
         }
     }
 

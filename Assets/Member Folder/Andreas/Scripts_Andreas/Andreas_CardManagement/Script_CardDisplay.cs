@@ -7,13 +7,14 @@ using UnityEngine.UI;
 
 public class Script_CardDisplay : MonoBehaviour
 {
-    public ScriptableObject_CardData[] cardDataArray; // Create an array of cardData to store the data of the cards
+    public ScriptableObject_CardData cardData; // Create an array of cardData to store the data of the cards
     public Image cardImage;
     public TextMeshProUGUI cardTitleText;
     public TextMeshProUGUI descriptionText;
 
     public void DisplayCard(ScriptableObject_CardData cardData)
     {
+        this.cardData = cardData;
         cardImage.sprite = cardData.cardImage;
         cardTitleText.text = cardData.cardName;
         descriptionText.text = cardData.description;
