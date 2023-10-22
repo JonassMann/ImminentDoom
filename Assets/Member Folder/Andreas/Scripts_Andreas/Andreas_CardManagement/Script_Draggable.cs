@@ -6,17 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public enum Type
-    {
-        Etos,
-        Patos,
-        Logos,
-        Kairos
-    }
 
     GameObject placeholder = null;
-
-    public Type typeOfRhetorical = Type.Etos;
 
     [HideInInspector]
     public Transform parentToReturnTo = null;

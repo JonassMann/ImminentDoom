@@ -18,7 +18,7 @@ MonoBehaviour:
   cardTarget: 2
   description: Deals {0} damage to target enemy.
   cardImage: {fileID: 0}
-  level: 1
+  level: 0
   modifiers: []
   cardEffects:
   - effectType: 1

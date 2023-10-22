@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3dc2f8679f6f84b893da4cf59b9002, type: 3}
   m_Name: Card_Defend
   m_EditorClassIdentifier: 
-  cardName: 
+  cardName: Defend
   cardType: 1
   cardRarity: 0
   cardTarget: 1
   description: Gain {0} block
   cardImage: {fileID: 0}
-  level: 1
+  level: 0
   modifiers: []
   cardEffects:
   - effectType: 3
     value: 5
-    scaling: 8
+    scaling: 3

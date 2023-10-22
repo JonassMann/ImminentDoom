@@ -41,8 +41,8 @@ public class Script_CardManager : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, cardParentHand.transform);
 
             // Get the CardDisplay component of the new card and display the drawn card's data.
-            Script_CardDisplay cardDisplay = newCard.GetComponent<Script_CardDisplay>();
-            cardDisplay.DisplayCard(drawnCard);
+            CardDisplay cardDisplay = newCard.GetComponent<CardDisplay>();
+            // cardDisplay.DisplayCard(drawnCard);
 
             // Add the drawn card to the list in the correct order.
             drawnCards.Add(drawnCard);
@@ -53,7 +53,7 @@ public class Script_CardManager : MonoBehaviour
     {
         foreach (Transform t in cardParentPlayArea.transform)
         {
-            ApplyCardEffect(t.GetComponent<Script_CardDisplay>().cardData);
+            //ApplyCardEffect(t.GetComponent<CardDisplay>().cardData);
         }
     }
 

@@ -18,7 +18,7 @@ MonoBehaviour:
   cardTarget: 0
   description: Buffs next position for Logos
   cardImage: {fileID: 0}
-  level: 1
+  level: 0
   modifiers:
   - position: 1
     cardType: 3

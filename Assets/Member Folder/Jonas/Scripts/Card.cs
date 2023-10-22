@@ -11,7 +11,7 @@ public class Card : ScriptableObject
     public CardTarget cardTarget;
     [TextArea(3,10)] public string description;
     public Sprite cardImage;
-    public int level = 1;
+    public int level = 0;
 
     public List<CardModifier> modifiers;
     public List<CardEffect> cardEffects;
@@ -20,7 +20,6 @@ public class Card : ScriptableObject
     // OnPlay
     // OnDiscard
 
-    // This probably wrong, le3aving for reference
     public int GetEffectValue(int pos)
     {
         return (int)(cardEffects[pos].value + (cardEffects[pos].scaling*level));

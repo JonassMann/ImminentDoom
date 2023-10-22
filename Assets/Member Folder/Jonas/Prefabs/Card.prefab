@@ -92,12 +92,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
+  m_fontSize: 20
   m_fontSizeBase: 8
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 8
+  m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -226,12 +226,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
+  m_fontSize: 18
   m_fontSizeBase: 8
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -309,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1205, y: -27.137268}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 127.6558, y: 181.6506}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6873385233058131414
@@ -362,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3147347166bbe50418a1cf2352e0c3a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfRhetorical: 0
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
 --- !u!114 &3752262006733640447
@@ -409,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fece115d3bd824c9f66c7ac22c86e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 0}
   cardImage: {fileID: 7662307991022157728}
   cardTitleText: {fileID: 5426582507950770292}
   descriptionText: {fileID: 949835199631243394}
