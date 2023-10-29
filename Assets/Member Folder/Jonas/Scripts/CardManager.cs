@@ -114,10 +114,15 @@ public class CardManager : MonoBehaviour
         CardDisplay tempCardDisplay;
 
         int counter = 0;
+        Debug.Log(playArea.transform.childCount);
         for (int i = 0; i < playArea.transform.childCount; i++)
         {
             tempCardDisplay = playArea.transform.GetChild(counter).GetComponent<CardDisplay>();
-            if (tempCardDisplay == null) continue;
+            if (tempCardDisplay == null)
+            {
+                counter++;
+                continue;
+            }
 
             foreach (CardModifier c in tempCardDisplay.card.modifiers)
             {
@@ -128,17 +133,23 @@ public class CardManager : MonoBehaviour
             }
             counter++;
         }
+        Debug.Log(counter);
 
         counter = 0;
         for (int i = 0; i < playArea.transform.childCount; i++)
         {
             tempCardDisplay = playArea.transform.GetChild(counter).GetComponent<CardDisplay>();
-            if (tempCardDisplay == null) continue;
+            if (tempCardDisplay == null)
+            {
+                counter++;
+                continue;
+            }
 
             tempCardDisplay.UpdateCard(cardsMods[tempCardDisplay.card.cardType][counter]);
             counter++;
         }
 
+        Debug.Log(counter);
         // Debug.Log("Play Area Updated");
     }
 
