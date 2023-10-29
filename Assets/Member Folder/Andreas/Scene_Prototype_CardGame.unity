@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d08b645b5437b743bda988ad7971ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardManager: {fileID: 1888321269}
 --- !u!114 &271467484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ GameObject:
   - component: {fileID: 332987511}
   - component: {fileID: 332987510}
   m_Layer: 5
-  m_Name: Placement text
+  m_Name: Play Area Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Placement Area
+  m_text: Play Area
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1318,7 +1319,7 @@ GameObject:
   - component: {fileID: 1820428792}
   - component: {fileID: 1820428791}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Hand Area Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1545,15 +1546,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedf89771893ca94080999a894759ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHandSize: 10
   cardsDeck: []
-  cardsHand: []
-  cardsPlay: []
-  cardsMods: 
   player: {fileID: 0}
   enemy: {fileID: 0}
   handArea: {fileID: 2066141120}
   playArea: {fileID: 271467481}
   cardHolder: {fileID: 1714243791}
+  cardPrefab: {fileID: 6472386197521726868, guid: 8b00d3e949918534e8df41f760f1dc6e, type: 3}
 --- !u!114 &1888321270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1713,6 +1713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d08b645b5437b743bda988ad7971ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardManager: {fileID: 1888321269}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

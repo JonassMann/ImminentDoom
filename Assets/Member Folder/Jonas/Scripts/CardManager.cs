@@ -9,9 +9,7 @@ public class CardManager : MonoBehaviour
     public int maxHandSize = 10;
 
     public List<Card> cardsDeck;
-    public List<Card> cardsHand;
-    public List<Card> cardsPlay;
-    public List<int> cardsMods;
+    public Dictionary<CardType, List<int>> cardsMods;
 
     public Character player;
     public Character enemy;
@@ -23,10 +21,14 @@ public class CardManager : MonoBehaviour
     public GameObject cardPrefab;
     private GameManager gameManager;
 
+    private int[] refList = new int[10];
+
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         cardsDeck = new List<Card>(gameManager.playerDeck);
+        cardsMods = new Dictionary<CardType, List<int>>();
+        ResetModList();
 
         for (int i = 0; i < 10; i++)
         {
@@ -47,9 +49,17 @@ public class CardManager : MonoBehaviour
         Draw(5);
     }
 
+    public void ResetModList()
+    {
+        cardsMods[CardType.Etos] = new List<int>(refList);
+        cardsMods[CardType.Patos] = new List<int>(refList);
+        cardsMods[CardType.Logos] = new List<int>(refList);
+        cardsMods[CardType.Kairos] = new List<int>(refList);
+    }
+
     public GameObject GetCardObject()
     {
-        if(cardHolder.transform.childCount <= 0)
+        if (cardHolder.transform.childCount <= 0)
             for (int i = 0; i < 10; i++)
             {
                 GameObject temp = Instantiate(cardPrefab, cardHolder.transform);
@@ -59,19 +69,26 @@ public class CardManager : MonoBehaviour
         return cardHolder.transform.GetChild(0).gameObject;
     }
 
+    [Button]
     public void Draw(int num = 1)
     {
         for (int i = 0; i < num; i++)
         {
-            if(cardsHand.Count >= maxHandSize)
+            if (handArea.transform.childCount >= maxHandSize)
             {
                 Debug.Log("Hand full");
                 return;
             }
 
             Card tempCard = GetCard();
+
+            if (tempCard == null)
+            {
+                Debug.Log($"Deck empty - {num - i} draw skipped");
+                return;
+            }
+
             cardsDeck.Remove(tempCard);
-            cardsHand.Add(tempCard);
 
             GameObject cardObject = GetCardObject();
             cardObject.transform.SetParent(handArea.transform);
@@ -81,16 +98,62 @@ public class CardManager : MonoBehaviour
 
     public Card GetCard(int id = -1)
     {
+        if (cardsDeck.Count == 0) return null;
+
         Card selectedCard = null;
-        if(id < 0)
+        if (id < 0)
         {
             selectedCard = cardsDeck[Random.Range(0, cardsDeck.Count)];
         }
         return selectedCard;
     }
 
+    public void UpdatePlay()
+    {
+        ResetModList();
+        CardDisplay tempCardDisplay;
+
+        int counter = 0;
+        for (int i = 0; i < playArea.transform.childCount; i++)
+        {
+            tempCardDisplay = playArea.transform.GetChild(counter).GetComponent<CardDisplay>();
+            if (tempCardDisplay == null) continue;
+
+            foreach (CardModifier c in tempCardDisplay.card.modifiers)
+            {
+                int modPos = counter + c.position;
+                if (modPos < 0 || modPos >= 10) continue;
+
+                cardsMods[c.cardType][modPos] += c.modValue;
+            }
+            counter++;
+        }
+
+        counter = 0;
+        for (int i = 0; i < playArea.transform.childCount; i++)
+        {
+            tempCardDisplay = playArea.transform.GetChild(counter).GetComponent<CardDisplay>();
+            if (tempCardDisplay == null) continue;
+
+            tempCardDisplay.UpdateCard(cardsMods[tempCardDisplay.card.cardType][counter]);
+            counter++;
+        }
+
+        // Debug.Log("Play Area Updated");
+    }
+
     public void PlayCards()
     {
+        // Remove cards from play area, put cards back in deck
+    }
 
+    [Button]
+    public void TestStuff()
+    {
+        string s = "";
+        foreach (int i in cardsMods[CardType.Logos])
+            s += $"{i}, ";
+
+        Debug.Log(s);
     }
 }

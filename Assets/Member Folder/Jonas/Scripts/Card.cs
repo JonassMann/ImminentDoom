@@ -20,9 +20,9 @@ public class Card : ScriptableObject
     // OnPlay
     // OnDiscard
 
-    public int GetEffectValue(int pos)
+    public int GetEffectValue(int pos, int modLevel = 0)
     {
-        return (int)(cardEffects[pos].value + (cardEffects[pos].scaling*level));
+        return (int)(cardEffects[pos].value + (cardEffects[pos].scaling*(level+modLevel)));
     }
 }
 

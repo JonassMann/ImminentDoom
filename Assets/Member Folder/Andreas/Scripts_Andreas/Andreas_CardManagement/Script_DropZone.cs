@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class Script_DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         //Debug.Log("OnPointerEnter");

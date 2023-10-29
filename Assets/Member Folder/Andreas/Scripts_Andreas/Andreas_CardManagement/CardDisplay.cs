@@ -11,13 +11,21 @@ public class CardDisplay : MonoBehaviour
     public TextMeshProUGUI cardTitleText;
     public TextMeshProUGUI descriptionText;
 
+    public Card card;
+
     public void DisplayCard(Card cardData)
     {
-        cardImage.sprite = cardData.cardImage;
-        cardTitleText.text = cardData.cardName;
+        card = cardData;
+        UpdateCard();
+    }
+
+    public void UpdateCard(int modLevel = 0)
+    {
+        cardImage.sprite = card.cardImage;
+        cardTitleText.text = card.cardName;
 
         StringBuilder sb = new StringBuilder();
-        string[] parts = cardData.description.Split('{');
+        string[] parts = card.description.Split('{');
         sb.Append(parts[0]);
 
         for (int i = 1; i < parts.Length; i++)
@@ -25,10 +33,10 @@ public class CardDisplay : MonoBehaviour
             string valueString = parts[i][..1];
 
             if (int.TryParse(valueString, out int value))
-                sb.Append(cardData.GetEffectValue(value));
+                sb.Append(card.GetEffectValue(value, modLevel));
             else
             {
-                Debug.Log($"Parse error: {cardData.name}");
+                Debug.Log($"Parse error: {card.name}");
                 sb.Append("null");
             }
 

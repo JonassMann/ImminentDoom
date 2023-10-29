@@ -6,17 +6,22 @@ using UnityEngine.EventSystems;
 
 public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-
-    GameObject placeholder = null;
+    private CardManager cardManager;
+    GameObject placeholder;
 
     [HideInInspector]
     public Transform parentToReturnTo = null;
     public Transform placeholderParent = null;
 
+    private void Awake()
+    {
+        cardManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CardManager>();
+    }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentToReturnTo = this.transform.parent; // Save the parent
-        Debug.Log("OnBeginDrag");
+        // Debug.Log("OnBeginDrag");
 
         // Create a placeholder object and set the size to the same as the object we are dragging (so the layout doesn't change when we drag the object)
         placeholder = new GameObject(); // Create a placeholder object
@@ -67,7 +72,7 @@ public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        // Debug.Log("OnEndDrag");
         this.transform.SetParent(parentToReturnTo); // Set the parent back to the saved parent  
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex()); // Set the index back to the saved index
         GetComponent<CanvasGroup>().blocksRaycasts = true; // Make the object non transparent for raycasts (so we can hit raycasts on it again)
@@ -76,5 +81,6 @@ public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
         GetComponent<CanvasGroup>().blocksRaycasts = true; // Make the object non transparent for raycasts (so we can hit raycasts on it again)
 
+        cardManager.UpdatePlay();
     }
 }
