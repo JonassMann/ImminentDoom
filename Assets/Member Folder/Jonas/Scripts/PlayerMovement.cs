@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Transform playerTransform;
     private Transform cameraTransform;
 
+    public bool canMove = true;
+
     private void Start()
     {
         playerTransform = GetComponent<Transform>();
@@ -18,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove) return;
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 

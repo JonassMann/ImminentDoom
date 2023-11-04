@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : ScriptableObject
 {
     public int maxHealth;
     public int health;
     public int block;
     public Dictionary<Effect, int> effects;
 
-    public void TakeDamage(int damage, bool ignoreBlock = false)
+    public virtual void TakeDamage(int damage, bool ignoreBlock = false)
     {
         if (effects.ContainsKey(Effect.Vulnerable))
             damage = (int)(damage * 1.5f);
@@ -33,7 +33,13 @@ public class Character : MonoBehaviour
         if (health < 0) health = 0;
     }
 
-    public void StartTurn()
+    public virtual void EndCombat()
+    {
+        block = 0;
+        effects = new Dictionary<Effect, int>();
+    }
+
+    public virtual void StartTurn()
     {
         if (effects.ContainsKey(Effect.Metallicize))
         {
@@ -46,7 +52,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void EndTurn()
+    public virtual void EndTurn()
     {
         if (effects.ContainsKey(Effect.Vulnerable))
         {
@@ -128,5 +134,6 @@ public enum Effect
     Etos,
     Patos,
     Logos,
-    Kairos
+    Kairos,
+    DrawCount
 }

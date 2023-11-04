@@ -11,7 +11,9 @@ public class CardManager : MonoBehaviour
     public List<Card> cardsDeck;
     public Dictionary<CardType, List<int>> cardsMods;
 
+    [HideInInspector]
     public Character player;
+    [HideInInspector]
     public Character enemy;
 
     public GameObject handArea;
@@ -26,7 +28,6 @@ public class CardManager : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        cardsDeck = new List<Card>(gameManager.playerDeck);
         cardsMods = new Dictionary<CardType, List<int>>();
         ResetModList();
 
@@ -37,16 +38,19 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void Init()
     {
-        Init();
+        player.effects = new Dictionary<Effect, int>();
+        cardsDeck = new List<Card>(gameManager.playerDeck);
+        NewTurn();
         // UI setup, hp and such
     }
 
-    public void Init()
+    public void NewTurn()
     {
-
-        Draw(5);
+        int drawCount = 5;
+        if (player.effects.ContainsKey(Effect.DrawCount)) drawCount += player.effects[Effect.DrawCount];
+        Draw(drawCount);
     }
 
     public void ResetModList()
@@ -114,7 +118,6 @@ public class CardManager : MonoBehaviour
         CardDisplay tempCardDisplay;
 
         int counter = 0;
-        Debug.Log(playArea.transform.childCount);
         for (int i = 0; i < playArea.transform.childCount; i++)
         {
             tempCardDisplay = playArea.transform.GetChild(counter).GetComponent<CardDisplay>();
@@ -155,6 +158,11 @@ public class CardManager : MonoBehaviour
 
     public void PlayCards()
     {
+        foreach (Transform t in handArea.transform)
+        {
+
+        }
+
         // Remove cards from play area, put cards back in deck
     }
 

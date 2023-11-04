@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Member Folder/Jonas/FullTest.unity
+    guid: b918b941ae438e34ab7e208e6b7f052d
+  - enabled: 1
+    path: Assets/Member Folder/Andreas/Scene_Prototype_CardGame.unity
+    guid: 1e226afc2502cfb42817bae81af75d5e
   m_configObjects: {}

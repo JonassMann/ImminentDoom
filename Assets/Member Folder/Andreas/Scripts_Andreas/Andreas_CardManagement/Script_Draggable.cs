@@ -15,7 +15,7 @@ public class Script_Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     private void Awake()
     {
-        cardManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CardManager>();
+        cardManager = GameObject.FindGameObjectWithTag("CardManager").GetComponent<CardManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)

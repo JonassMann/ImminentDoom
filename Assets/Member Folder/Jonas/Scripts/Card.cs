@@ -8,7 +8,6 @@ public class Card : ScriptableObject
     public string cardName;
     public CardType cardType;
     public CardRarity cardRarity;
-    public CardTarget cardTarget;
     [TextArea(3,10)] public string description;
     public Sprite cardImage;
     public int level = 0;
@@ -32,6 +31,7 @@ public class CardEffect
     public CardEffectType effectType;
     public float value;
     public float scaling;
+    public CardTarget target;
 }
 
 [System.Serializable]
@@ -56,9 +56,9 @@ public enum CardEffectType
     Damage,
     Healing,
     Block,
-    //EffectSelf,
-    //EffectTarget
-    //  Other/ Unique
+    // EffectSelf,
+    // EffectTarget
+    // Other/ Unique
 }
 public enum CardRarity
 {
